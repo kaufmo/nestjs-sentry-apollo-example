@@ -3,9 +3,10 @@ import * as Tracing from '@sentry/tracing';
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   Sentry.init({
     dsn: 'https://examplePublicKey@o0.ingest.sentry.io/0',
 
